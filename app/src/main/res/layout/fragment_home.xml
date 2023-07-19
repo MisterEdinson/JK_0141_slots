@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fon2"
-    tools:context=".home.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -58,36 +58,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/bet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/imgFrHomeBtnMinus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_width="63dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="112dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/min"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imgFrHomeBtnBet"
-        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="@+id/imgFrHomeBtnBet"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnBet" />
 
     <ImageView
         android:id="@+id/imgFrHomeBtnPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="56dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="@+id/imgFrHomeBtnMinus"
         app:layout_constraintStart_toEndOf="@+id/imgFrHomeBtnMinus"
         app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnMinus"
-        app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
         android:id="@+id/imgFrHomeBtnSpin"
