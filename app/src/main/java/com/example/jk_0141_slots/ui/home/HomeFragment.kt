@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.*
+import android.view.animation.Animation
+import android.view.animation.AnimationSet
+import android.view.animation.TranslateAnimation
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    val viewModel : HomeViewModel by activityViewModels()
+    val viewModel: HomeViewModel by activityViewModels()
     private lateinit var binding: FragmentHomeBinding
 
     private val array = intArrayOf(
@@ -49,7 +51,7 @@ class HomeFragment : Fragment() {
         tvInputSpin.text = viewModel.bet.toString()
 
 
-        imgFrHomeBtnBack.setOnClickListener{
+        imgFrHomeBtnBack.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_playFragment)
         }
 
@@ -65,19 +67,24 @@ class HomeFragment : Fragment() {
 
         imgFrHomeBtnMinus.setOnClickListener {
             val bet = viewModel.bet
-            if(bet < viewModel.betStep){
+            if (bet < viewModel.betStep) {
                 viewModel.bet = 0
-            }else{
+            } else {
                 viewModel.bet = bet - viewModel.betStep
             }
             tvInputSpin.text = viewModel.bet.toString()
         }
 
         imgFrHomeBtnSpin.setOnClickListener {
-            setupSpin()
+            if (viewModel.money <= 0) {
+                findNavController().navigate(R.id.action_homeFragment_to_gameOverFragment)
+            } else {
+                setupSpin()
+            }
         }
     }
-    private fun animateSpin(){
+
+    private fun animateSpin() {
         val translateAnim = TranslateAnimation(
             Animation.RELATIVE_TO_SELF, 0f,
             Animation.RELATIVE_TO_SELF, 0f,
@@ -95,11 +102,11 @@ class HomeFragment : Fragment() {
         imgSpin2R1.startAnimation(animat)
     }
 
-    private fun setupSpin(){
+    private fun setupSpin() {
 
-        row1Images = arrayListOf(array.random(), array.random() , array.random())
-        row2Images = arrayListOf(array.random(), array.random() , array.random())
-        row3Images = arrayListOf(array.random(), array.random() , array.random())
+        row1Images = arrayListOf(array.random(), array.random(), array.random())
+        row2Images = arrayListOf(array.random(), array.random(), array.random())
+        row3Images = arrayListOf(array.random(), array.random(), array.random())
 
         imgSpin1R1.setImageResource(row1Images[0])
         imgSpin1R2.setImageResource(row1Images[1])
@@ -115,32 +122,53 @@ class HomeFragment : Fragment() {
         resultAccess()
     }
 
-    private fun shiftStep(){
-        row1Images = arrayListOf(array.random(), row1Images[0] , row1Images[1])
-        row2Images = arrayListOf(array.random(), row1Images[0] , row1Images[1])
-        row3Images = arrayListOf(array.random(), row1Images[0] , row1Images[1])
+    private fun shiftStep() {
+        row1Images = arrayListOf(array.random(), row1Images[0], row1Images[1])
+        row2Images = arrayListOf(array.random(), row1Images[0], row1Images[1])
+        row3Images = arrayListOf(array.random(), row1Images[0], row1Images[1])
 
         imgSpin1R1.setImageResource(row1Images[0])
         imgSpin1R2.setImageResource(row1Images[1])
         imgSpin1R3.setImageResource(row1Images[2])
     }
 
-    private fun resultAccess(){
-        if(row1Images[1] == row2Images[1] && row2Images[1] == row3Images[1]){
-            val result = (viewModel.bet*20)+viewModel.money
+    private fun resultAccess() {
+        if (row1Images[1] == row2Images[1] && row2Images[1] == row3Images[1]) {
+            var result: Int = 0
+            result = if (viewModel.bet > viewModel.money) {
+                viewModel.money + (viewModel.money * 20)
+            } else {
+                viewModel.money + (viewModel.bet * 20)
+            }
             viewModel.money = result
             Toast.makeText(context, "You Win!", Toast.LENGTH_SHORT).show()
             tvMoney.text = viewModel.money.toString()
-        }else if(row1Images[1] == row2Images[1] || row2Images[1] == row3Images[1] || row1Images[1] == row3Images[1]){
-            val result = viewModel.money+viewModel.bet
+        } else if (row1Images[1] == row2Images[1] || row2Images[1] == row3Images[1] || row1Images[1] == row3Images[1]) {
+
+            var result: Int = 0
+
+            result = if (viewModel.bet > viewModel.money) {
+                viewModel.money + (viewModel.money / 2)
+            } else {
+                viewModel.money + (viewModel.bet / 2)
+            }
+
             viewModel.money = result
-            Toast.makeText(context, "You Win!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Not bad!", Toast.LENGTH_SHORT).show()
             tvMoney.text = viewModel.money.toString()
-        }else{
-            val result = viewModel.money-viewModel.bet
-            viewModel.money = result
-            Toast.makeText(context, "You Lost!", Toast.LENGTH_SHORT).show()
-            tvMoney.text = viewModel.money.toString()
+        } else {
+            val result = (viewModel.money - viewModel.bet)
+            if (result <= 0) {
+                viewModel.money = 0
+                tvMoney.text = viewModel.money.toString()
+
+            } else {
+                viewModel.money = result
+                Toast.makeText(context, "You Lost!", Toast.LENGTH_SHORT).show()
+                tvMoney.text = viewModel.money.toString()
+            }
+
         }
     }
+
 }
