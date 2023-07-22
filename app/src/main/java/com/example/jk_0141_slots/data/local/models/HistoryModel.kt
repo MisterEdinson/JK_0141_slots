@@ -11,5 +11,5 @@ data class HistoryModel (
     var money: Int? = null,
     var bet: Int? = null,
     var bonus: Int? = null,
-    var date: Date? = null
+    var date: String? = null
     )
