@@ -9,7 +9,7 @@
     tools:context=".ui.history.HistoryFragment">
 
     <ImageView
-        android:id="@+id/imgFrHomeBtnBack"
+        android:id="@+id/imgFrHistoryBtnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -27,12 +27,13 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgFrHomeBtnBack"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFrHistoryBtnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnBack" />
+        app:layout_constraintTop_toTopOf="@+id/imgFrHistoryBtnBack" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistory"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -44,6 +45,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFrHomeBtnBack" />
+        app:layout_constraintTop_toBottomOf="@+id/imgFrHistoryBtnBack" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

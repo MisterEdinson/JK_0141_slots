@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jk_0141_slots.R
 import com.example.jk_0141_slots.data.local.models.HistoryModel
+import kotlinx.android.synthetic.main.item_history.view.*
 
 class HistoryGameAdapter : RecyclerView.Adapter<HistoryGameAdapter.HistoryHolder>() {
     class HistoryHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -32,7 +33,11 @@ class HistoryGameAdapter : RecyclerView.Adapter<HistoryGameAdapter.HistoryHolder
     override fun onBindViewHolder(holder: HistoryHolder, position: Int) {
         val item = list.currentList[position]
         holder.itemView.apply {
-
+            tvIdGame.text = item.id.toString()
+            tvBetSumm.text = item.bet.toString()
+            tvBonusSumm.text = item.bonus.toString()
+            tvMoneySumm.text = item.money.toString()
+            tvWinSumm.text = item.win.toString()
         }
     }
 

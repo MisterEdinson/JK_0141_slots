@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.457" />
 
     <ImageView
-        android:id="@+id/imgFrHomeBtnBack"
+        android:id="@+id/imgFrHistoryBtnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -37,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:src="@drawable/bott_bonus"
-        app:layout_constraintBottom_toBottomOf="@+id/imgFrHomeBtnBack"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFrHistoryBtnBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnBack"
+        app:layout_constraintTop_toTopOf="@+id/imgFrHistoryBtnBack"
         android:contentDescription="@string/todo" />
 
     <ImageView

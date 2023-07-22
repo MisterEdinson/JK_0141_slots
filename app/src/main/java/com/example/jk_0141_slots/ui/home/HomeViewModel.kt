@@ -19,14 +19,14 @@ class HomeViewModel @Inject constructor(private val repo: Repository) : ViewMode
     val betStep: Int = 5
     var bonus: Int = 1000
 
-    suspend fun getHistory(){
+    fun getHistory(){
         viewModelScope.launch {
             val response = repo.getHistory()
             historyData.value = response
         }
     }
 
-    suspend fun insertHistory(insert: HistoryModel){
+    fun insertHistory(insert: HistoryModel){
         viewModelScope.launch {
             repo.addHistory(insert)
         }

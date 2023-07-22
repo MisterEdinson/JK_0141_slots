@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
+import com.example.jk_0141_slots.data.local.models.HistoryModel
 import com.example.jk_0141_slots.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.Date
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -52,7 +54,7 @@ class HomeFragment : Fragment() {
         tvInputSpin.text = viewModel.bet.toString()
 
 
-        imgFrHomeBtnBack.setOnClickListener {
+        imgFrHistoryBtnBack.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_playFragment)
         }
 
@@ -145,6 +147,7 @@ class HomeFragment : Fragment() {
             viewModel.money = result
             Toast.makeText(context, "You Win!", Toast.LENGTH_SHORT).show()
             tvMoney.text = viewModel.money.toString()
+            viewModel.insertHistory(writeHistory(result))
         } else if (row1Images[1] == row2Images[1] || row2Images[1] == row3Images[1] || row1Images[1] == row3Images[1]) {
 
             var result: Int = 0
@@ -156,6 +159,7 @@ class HomeFragment : Fragment() {
             }
 
             viewModel.money = result
+            viewModel.insertHistory(writeHistory(result))
             Toast.makeText(context, "Not bad!", Toast.LENGTH_SHORT).show()
             tvMoney.text = viewModel.money.toString()
         } else {
@@ -163,14 +167,36 @@ class HomeFragment : Fragment() {
             if (result <= 0) {
                 viewModel.money = 0
                 tvMoney.text = viewModel.money.toString()
-
+                viewModel.insertHistory(writeHistory(result))
             } else {
                 viewModel.money = result
                 Toast.makeText(context, "You Lost!", Toast.LENGTH_SHORT).show()
                 tvMoney.text = viewModel.money.toString()
+                viewModel.insertHistory(writeHistory(result))
             }
 
         }
     }
-
+    private fun writeHistory(win: Int): HistoryModel{
+        val history = HistoryModel(
+            id = 0,
+            bet = viewModel.bet,
+            win = win,
+            bonus = 0,
+            money = viewModel.money,
+            date = Date().toString()
+        )
+        return history
+    }
+    private fun writeBonus(bonus: Int): HistoryModel{
+        val history = HistoryModel(
+            id = 0,
+            bet = viewModel.bet,
+            win = 0,
+            bonus = bonus,
+            money = viewModel.money,
+            date = Date().toString()
+        )
+        return history
+    }
 }
