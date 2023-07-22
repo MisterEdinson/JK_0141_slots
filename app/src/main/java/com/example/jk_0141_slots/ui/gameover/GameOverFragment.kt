@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_game_over.*
 
-
+@AndroidEntryPoint
 class GameOverFragment : Fragment() {
 
     override fun onCreateView(

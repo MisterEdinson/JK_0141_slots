@@ -9,9 +9,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
 import com.example.jk_0141_slots.ui.home.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_bonus.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
+@AndroidEntryPoint
 class BonusFragment : Fragment() {
 
     val viewModel : HomeViewModel by activityViewModels()

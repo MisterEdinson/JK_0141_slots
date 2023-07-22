@@ -13,9 +13,10 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
 import com.example.jk_0141_slots.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
 
-
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     val viewModel: HomeViewModel by activityViewModels()
