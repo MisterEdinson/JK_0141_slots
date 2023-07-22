@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_gameOverFragment"
             app:destination="@id/gameOverFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/bonusFragment"
@@ -46,5 +49,14 @@
         <action
             android:id="@+id/action_gameOverFragment_to_playFragment"
             app:destination="@id/playFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.jk_0141_slots.ui.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>
