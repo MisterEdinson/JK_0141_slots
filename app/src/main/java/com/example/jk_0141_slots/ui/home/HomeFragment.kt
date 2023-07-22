@@ -57,7 +57,8 @@ class HomeFragment : Fragment() {
         }
 
         imgFrHomeBtnMoney.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_bonusFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
+            //findNavController().navigate(R.id.action_homeFragment_to_bonusFragment)
         }
 
         imgFrHomeBtnPlus.setOnClickListener {

@@ -9,6 +9,7 @@ data class HistoryModel (
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0,
     var money: Int? = null,
+    var win:Int? = null,
     var bet: Int? = null,
     var bonus: Int? = null,
     var date: String? = null
