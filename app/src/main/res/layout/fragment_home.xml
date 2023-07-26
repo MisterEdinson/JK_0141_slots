@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fon2"
+    tools:context=".ui.home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ramka"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <ImageView
+        android:id="@+id/imgFrHistoryBtnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/bott_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgFrHomeBtnMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/bott_bonus"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFrHistoryBtnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imgFrHistoryBtnBack"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/money"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imgFrHomeBtnBet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/bet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:id="@+id/imgFrHomeBtnMinus"
+        android:layout_width="63dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="112dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/min"
+        app:layout_constraintEnd_toEndOf="@+id/imgFrHomeBtnBet"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="@+id/imgFrHomeBtnBet"
+        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnBet" />
+
+    <ImageView
+        android:id="@+id/imgFrHomeBtnPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFrHomeBtnMinus"
+        app:layout_constraintStart_toEndOf="@+id/imgFrHomeBtnMinus"
+        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnMinus"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/imgFrHomeBtnSpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:src="@drawable/bott_spin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintStart_toEndOf="@+id/imgFrHomeBtnBet"
+        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnBet"
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imgBgRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:src="@drawable/pole"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.51"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imgBgRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pole"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toStartOf="@+id/imgBgRow3"
+        app:layout_constraintStart_toEndOf="@+id/imgBgRow1"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/imgBgRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/pole"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.51" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/imgFrHomeRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBgRow1"
+        app:layout_constraintEnd_toEndOf="@+id/imgBgRow1"
+        app:layout_constraintStart_toStartOf="@+id/imgBgRow1">
+
+        <ImageView
+            android:id="@+id/imgSpin1R0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_8" />
+
+        <ImageView
+            android:id="@+id/imgSpin1R1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_8" />
+        <ImageView
+            android:id="@+id/imgSpin1R2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_4" />
+        <ImageView
+            android:id="@+id/imgSpin1R3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_7" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/imgFrHomeRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBgRow2"
+        app:layout_constraintEnd_toEndOf="@+id/imgBgRow2"
+        app:layout_constraintStart_toStartOf="@+id/imgBgRow2">
+
+        <ImageView
+            android:id="@+id/imgSpin2R0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_7"/>
+
+        <ImageView
+            android:id="@+id/imgSpin2R1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_7"/>
+        <ImageView
+            android:id="@+id/imgSpin2R2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_6"/>
+        <ImageView
+            android:id="@+id/imgSpin2R3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_8"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/imgFrHomeRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBgRow3"
+        app:layout_constraintEnd_toEndOf="@+id/imgBgRow3"
+        app:layout_constraintStart_toStartOf="@+id/imgBgRow3">
+
+        <ImageView
+            android:id="@+id/imgSpin3R0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_2" />
+
+        <ImageView
+            android:id="@+id/imgSpin3R1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_2" />
+
+        <ImageView
+            android:id="@+id/imgSpin3R2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_1" />
+
+        <ImageView
+            android:id="@+id/imgSpin3R3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_3" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/tvMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_000030000"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintHorizontal_bias="0.669"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/tvInputSpin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_20"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgFrHomeBtnMinus"
+        app:layout_constraintEnd_toStartOf="@+id/imgFrHomeBtnPlus"
+        app:layout_constraintStart_toEndOf="@+id/imgFrHomeBtnMinus"
+        app:layout_constraintTop_toTopOf="@+id/imgFrHomeBtnMinus" />
+
+    <ImageView
+        android:id="@+id/imgFrHomeCenterLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        android:contentDescription="@string/todo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
