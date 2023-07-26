@@ -145,8 +145,14 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/imgBgRow1"
         app:layout_constraintEnd_toEndOf="@+id/imgBgRow1"
-        app:layout_constraintStart_toStartOf="@+id/imgBgRow1"
-        app:layout_constraintTop_toTopOf="@+id/imgBgRow1">
+        app:layout_constraintStart_toStartOf="@+id/imgBgRow1">
+
+        <ImageView
+            android:id="@+id/imgSpin1R0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_8" />
 
         <ImageView
             android:id="@+id/imgSpin1R1"
@@ -172,8 +178,14 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/imgBgRow2"
         app:layout_constraintEnd_toEndOf="@+id/imgBgRow2"
-        app:layout_constraintStart_toStartOf="@+id/imgBgRow2"
-        app:layout_constraintTop_toTopOf="@+id/imgBgRow2">
+        app:layout_constraintStart_toStartOf="@+id/imgBgRow2">
+
+        <ImageView
+            android:id="@+id/imgSpin2R0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_7"/>
 
         <ImageView
             android:id="@+id/imgSpin2R1"
@@ -200,8 +212,14 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/imgBgRow3"
         app:layout_constraintEnd_toEndOf="@+id/imgBgRow3"
-        app:layout_constraintStart_toStartOf="@+id/imgBgRow3"
-        app:layout_constraintTop_toTopOf="@+id/imgBgRow3">
+        app:layout_constraintStart_toStartOf="@+id/imgBgRow3">
+
+        <ImageView
+            android:id="@+id/imgSpin3R0"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ico_2" />
 
         <ImageView
             android:id="@+id/imgSpin3R1"

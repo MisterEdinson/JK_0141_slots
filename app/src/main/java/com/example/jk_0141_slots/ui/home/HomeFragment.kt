@@ -1,9 +1,12 @@
 package com.example.jk_0141_slots.ui.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.TranslateAnimation
@@ -14,31 +17,23 @@ import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
 import com.example.jk_0141_slots.data.local.models.HistoryModel
 import com.example.jk_0141_slots.databinding.FragmentHomeBinding
+import com.example.jk_0141_slots.domain.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.Date
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.util.*
+
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     val viewModel: HomeViewModel by activityViewModels()
     private lateinit var binding: FragmentHomeBinding
-
-    private val array = intArrayOf(
-        R.drawable.ico_1,
-        R.drawable.ico_2,
-        R.drawable.ico_3,
-        R.drawable.ico_4,
-        R.drawable.ico_5,
-        R.drawable.ico_6,
-        R.drawable.ico_7,
-        R.drawable.ico_8,
-    )
-
-    private var cycle = 5
-    private var row1Images = listOf<Int>()
-    private var row2Images = listOf<Int>()
-    private var row3Images = listOf<Int>()
+    var isButtonClickable = true
+    val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,66 +73,113 @@ class HomeFragment : Fragment() {
             }
             tvInputSpin.text = viewModel.bet.toString()
         }
-
+        updateSpin()
         imgFrHomeBtnSpin.setOnClickListener {
             if (viewModel.money <= 0) {
                 findNavController().navigate(R.id.action_homeFragment_to_gameOverFragment)
             } else {
-                setupSpin()
+                if (isButtonClickable) {
+                    isButtonClickable = false
+                    animateSpin()
+                    coroutineScope.launch {
+                        delay(Constants.SPEED_ANIM_MAX*Constants.COUNT_REPEAT + 500)
+                        isButtonClickable = true
+                    }
+                }
             }
         }
     }
 
     private fun animateSpin() {
-        val translateAnim = TranslateAnimation(
+        imgSpin1R0.startAnimation(moveDownIn())
+        imgSpin1R3.startAnimation(moveDownOut())
+        imgSpin1R2.startAnimation(moveDownOut())
+        imgSpin1R1.startAnimation(moveDownOut())
+
+        imgSpin2R0.startAnimation(moveDownIn())
+        imgSpin2R3.startAnimation(moveDownOut())
+        imgSpin2R2.startAnimation(moveDownOut())
+        imgSpin2R1.startAnimation(moveDownOut())
+
+        imgSpin3R0.startAnimation(moveDownIn())
+        imgSpin3R3.startAnimation(moveDownOut())
+        imgSpin3R2.startAnimation(moveDownOut())
+        imgSpin3R1.startAnimation(moveDownOut())
+    }
+
+
+    fun updateSpin() {
+        imgSpin1R0.setImageResource(viewModel.row1[0])
+        imgSpin1R1.setImageResource(viewModel.row1[1])
+        imgSpin1R2.setImageResource(viewModel.row1[2])
+        imgSpin1R3.setImageResource(viewModel.row1[3])
+
+        imgSpin2R1.setImageResource(viewModel.row2[0])
+        imgSpin2R2.setImageResource(viewModel.row2[1])
+        imgSpin2R3.setImageResource(viewModel.row2[2])
+
+        imgSpin3R1.setImageResource(viewModel.row3[0])
+        imgSpin3R2.setImageResource(viewModel.row3[1])
+        imgSpin3R3.setImageResource(viewModel.row3[2])
+    }
+
+    fun moveDownOut(): Animation {
+        val translateAnimOut = TranslateAnimation(
             Animation.RELATIVE_TO_SELF, 0f,
             Animation.RELATIVE_TO_SELF, 0f,
             Animation.RELATIVE_TO_SELF, 0f,
             Animation.RELATIVE_TO_SELF, 1f
         )
-        translateAnim.duration = 1000 // Длительность анимации в миллисекундах
-        translateAnim.fillAfter = true
+        translateAnimOut.duration = Constants.SPEED_ANIM_MAX
+        translateAnimOut.repeatCount = Constants.COUNT_REPEAT
+        translateAnimOut.fillAfter = true
 
         val animat = AnimationSet(true)
-        animat.addAnimation(translateAnim)
-
-        imgSpin2R3.startAnimation(animat)
-        imgSpin2R2.startAnimation(animat)
-        imgSpin2R1.startAnimation(animat)
+        animat.addAnimation(translateAnimOut)
+        return animat
     }
 
-    private fun setupSpin() {
+    fun moveDownIn(): Animation {
+        val translateAnimOut = TranslateAnimation(
+            Animation.RELATIVE_TO_SELF, 0f,
+            Animation.RELATIVE_TO_SELF, 0f,
+            Animation.RELATIVE_TO_SELF, 0f,
+            Animation.RELATIVE_TO_SELF, 1f
+        )
+        translateAnimOut.duration = Constants.SPEED_ANIM_MAX
+        translateAnimOut.repeatCount = Constants.COUNT_REPEAT
+        translateAnimOut.fillAfter = true
 
-        row1Images = arrayListOf(array.random(), array.random(), array.random())
-        row2Images = arrayListOf(array.random(), array.random(), array.random())
-        row3Images = arrayListOf(array.random(), array.random(), array.random())
+        val animat = AnimationSet(true)
+        animat.addAnimation(translateAnimOut)
 
-        imgSpin1R1.setImageResource(row1Images[0])
-        imgSpin1R2.setImageResource(row1Images[1])
-        imgSpin1R3.setImageResource(row1Images[2])
+        val animation = AlphaAnimation(0f, 1f)
+        animation.duration = Constants.SPEED_ANIM_MAX
+        animation.repeatCount = Constants.COUNT_REPEAT
+        animation.fillAfter = true
 
-        imgSpin2R1.setImageResource(row2Images[0])
-        imgSpin2R2.setImageResource(row2Images[1])
-        imgSpin2R3.setImageResource(row2Images[2])
+        translateAnimOut.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(p0: Animation?) {
+                Log.e("start", "----")
+            }
 
-        imgSpin3R1.setImageResource(row3Images[0])
-        imgSpin3R2.setImageResource(row3Images[1])
-        imgSpin3R3.setImageResource(row3Images[2])
-        resultAccess()
+            override fun onAnimationEnd(p0: Animation?) {
+                resultAccess()
+            }
+
+            override fun onAnimationRepeat(p0: Animation?) {
+                viewModel.shiftDown()
+                updateSpin()
+            }
+        })
+
+        animat.addAnimation(animation)
+        return animat
     }
 
-    private fun shiftStep() {
-        row1Images = arrayListOf(array.random(), row1Images[0], row1Images[1])
-        row2Images = arrayListOf(array.random(), row1Images[0], row1Images[1])
-        row3Images = arrayListOf(array.random(), row1Images[0], row1Images[1])
-
-        imgSpin1R1.setImageResource(row1Images[0])
-        imgSpin1R2.setImageResource(row1Images[1])
-        imgSpin1R3.setImageResource(row1Images[2])
-    }
 
     private fun resultAccess() {
-        if (row1Images[1] == row2Images[1] && row2Images[1] == row3Images[1]) {
+        if (viewModel.row1[1] == viewModel.row2[1] && viewModel.row2[1] == viewModel.row3[1]) {
             var result: Int = 0
             result = if (viewModel.bet > viewModel.money) {
                 viewModel.money + (viewModel.money * 20)
@@ -148,7 +190,7 @@ class HomeFragment : Fragment() {
             Toast.makeText(context, "You Win!", Toast.LENGTH_SHORT).show()
             tvMoney.text = viewModel.money.toString()
             viewModel.insertHistory(writeHistory(result))
-        } else if (row1Images[1] == row2Images[1] || row2Images[1] == row3Images[1] || row1Images[1] == row3Images[1]) {
+        } else if (viewModel.row1[1] == viewModel.row2[1] || viewModel.row2[1] == viewModel.row3[1] || viewModel.row1[1] == viewModel.row3[1]) {
 
             var result: Int = 0
 
@@ -177,7 +219,8 @@ class HomeFragment : Fragment() {
 
         }
     }
-    private fun writeHistory(win: Int): HistoryModel{
+
+    private fun writeHistory(win: Int): HistoryModel {
         val history = HistoryModel(
             id = 0,
             bet = viewModel.bet,
@@ -188,7 +231,8 @@ class HomeFragment : Fragment() {
         )
         return history
     }
-    private fun writeBonus(bonus: Int): HistoryModel{
+
+    private fun writeBonus(bonus: Int): HistoryModel {
         val history = HistoryModel(
             id = 0,
             bet = viewModel.bet,
