@@ -15,7 +15,7 @@ class HomeViewModel @Inject constructor(private val repo: Repository) : ViewMode
 
     val historyData: MutableLiveData<List<HistoryModel>> = MutableLiveData()
 
-    var money: Int = 3000
+    var money: Int = 0
     var bet: Int = 20
     val betStep: Int = 5
     var bonus: Int = 1000

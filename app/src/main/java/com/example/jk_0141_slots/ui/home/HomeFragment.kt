@@ -49,14 +49,12 @@ class HomeFragment : Fragment() {
         tvMoney.text = viewModel.money.toString()
         tvInputSpin.text = viewModel.bet.toString()
 
-
         imgFrHistoryBtnBack.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_playFragment)
         }
 
         imgFrHomeBtnMoney.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
-            //findNavController().navigate(R.id.action_homeFragment_to_bonusFragment)
         }
 
         imgFrHomeBtnPlus.setOnClickListener {
@@ -80,7 +78,7 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_homeFragment_to_gameOverFragment)
             } else {
                 if (isButtonClickable) {
-                    if(Constants.BONUS_ID == nextInt(0,3)){
+                    if(Constants.BONUS_ID == nextInt(0,10)){
                         findNavController().navigate(R.id.action_homeFragment_to_bonusFragment)
                     }else{
                         isButtonClickable = false
@@ -90,7 +88,6 @@ class HomeFragment : Fragment() {
                             isButtonClickable = true
                         }
                     }
-
                 }
             }
         }
