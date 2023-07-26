@@ -25,6 +25,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.random.Random.Default.nextInt
 
 
 @AndroidEntryPoint
@@ -79,12 +80,17 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_homeFragment_to_gameOverFragment)
             } else {
                 if (isButtonClickable) {
-                    isButtonClickable = false
-                    animateSpin()
-                    coroutineScope.launch {
-                        delay(Constants.SPEED_ANIM_MAX*Constants.COUNT_REPEAT + 500)
-                        isButtonClickable = true
+                    if(Constants.BONUS_ID == nextInt(0,3)){
+                        findNavController().navigate(R.id.action_homeFragment_to_bonusFragment)
+                    }else{
+                        isButtonClickable = false
+                        animateSpin()
+                        coroutineScope.launch {
+                            delay(Constants.SPEED_ANIM_MAX*Constants.COUNT_REPEAT + 500)
+                            isButtonClickable = true
+                        }
                     }
+
                 }
             }
         }

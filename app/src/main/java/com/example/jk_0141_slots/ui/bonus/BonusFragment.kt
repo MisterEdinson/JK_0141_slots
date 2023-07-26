@@ -6,12 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
+import com.example.jk_0141_slots.data.local.models.HistoryModel
 import com.example.jk_0141_slots.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_bonus.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import java.util.*
 
 @AndroidEntryPoint
 class BonusFragment : Fragment() {
@@ -31,9 +34,24 @@ class BonusFragment : Fragment() {
         tvBonus.text = rnds.toString()
         viewModel.bonus = rnds
         viewModel.money = viewModel.money+rnds
-
+        viewModel.insertHistory(writeHistory(rnds))
         imgFrBonusBtnOk.setOnClickListener {
-            findNavController().navigate(R.id.action_bonusFragment_to_homeFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.bonusFragment, true)
+                .build()
+            findNavController().navigate(R.id.action_bonusFragment_to_homeFragment, null, navOptions)
         }
+    }
+
+    private fun writeHistory(bonus: Int): HistoryModel {
+        val history = HistoryModel(
+            id = 0,
+            bet = viewModel.bet,
+            win = 0,
+            bonus = bonus,
+            money = viewModel.money,
+            date = Date().toString()
+        )
+        return history
     }
 }
