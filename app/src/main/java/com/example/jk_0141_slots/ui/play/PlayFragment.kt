@@ -29,7 +29,7 @@ class PlayFragment : Fragment() {
 
         imFrPlayBtn.setOnClickListener{
             if(viewModel.money == 0){
-                viewModel.money = 3000
+                viewModel.money = 1000
             }
             findNavController().navigate(R.id.action_playFragment_to_homeFragment)
         }

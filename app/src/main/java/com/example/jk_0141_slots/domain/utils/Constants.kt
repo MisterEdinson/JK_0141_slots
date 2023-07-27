@@ -18,5 +18,7 @@ class Constants {
         const val COUNT_REPEAT = 10
         const val SPEED_ANIM_MAX:Long = 100
         const val BONUS_ID = 2
+        const val BONUS_MIN = 0
+        const val BONUS_MAX = 1000
     }
 }

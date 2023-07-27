@@ -40,6 +40,7 @@ class HomeViewModel @Inject constructor(private val repo: Repository) : ViewMode
         row2 = arrayListOf(
             Constants.ICONS.random(),
             Constants.ICONS.random(),
+            Constants.ICONS.random(),
             Constants.ICONS.random()
         )
         row3 = arrayListOf(

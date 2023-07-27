@@ -1,19 +1,19 @@
 package com.example.jk_0141_slots.ui.bonus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
 import com.example.jk_0141_slots.data.local.models.HistoryModel
+import com.example.jk_0141_slots.domain.utils.Constants
 import com.example.jk_0141_slots.ui.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_bonus.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.*
 
 @AndroidEntryPoint
@@ -30,7 +30,7 @@ class BonusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val rnds = (0..1000).random()
+        val rnds = (Constants.BONUS_MIN..Constants.BONUS_MAX).random()
         tvBonus.text = rnds.toString()
         viewModel.bonus = rnds
         viewModel.money = viewModel.money+rnds
@@ -44,14 +44,13 @@ class BonusFragment : Fragment() {
     }
 
     private fun writeHistory(bonus: Int): HistoryModel {
-        val history = HistoryModel(
+        return HistoryModel(
             id = 0,
             bet = viewModel.bet,
-            win = 0,
+            win = "bonus",
             bonus = bonus,
             money = viewModel.money,
             date = Date().toString()
         )
-        return history
     }
 }

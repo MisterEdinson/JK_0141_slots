@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +24,10 @@ class GameOverFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btnGameOver.setOnClickListener {
-            findNavController().navigate(R.id.action_gameOverFragment_to_playFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.bonusFragment, true)
+                .build()
+            findNavController().navigate(R.id.action_gameOverFragment_to_playFragment, null, navOptions)
         }
     }
 }

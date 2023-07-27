@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.jk_0141_slots.R
 import com.example.jk_0141_slots.ui.home.HomeViewModel
@@ -34,7 +35,10 @@ class HistoryFragment : Fragment() {
         }
 
         imgFrHistoryBtnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_historyFragment_to_homeFragment)
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.bonusFragment, true)
+                .build()
+            findNavController().navigate(R.id.action_historyFragment_to_homeFragment, null, navOptions)
         }
     }
 
